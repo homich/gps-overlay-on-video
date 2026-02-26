@@ -3,18 +3,20 @@ package peregin.gpv.gui.gauge
 import scala.swing._
 import java.awt.{BasicStroke, Color, Dimension, Font, RenderingHints}
 import peregin.gpv.model.{InputValue, Sonda}
+import peregin.gpv.util.Io
 
 import java.util.function.Consumer
 
 
 trait GaugePainter {
 
-  lazy val gaugeFont = new Font("Verdana", Font.PLAIN, 12)
+//  lazy val gaugeFont = new Font("Verdana", Font.PLAIN, 12)
+  lazy val gaugeFont = Font.createFont(Font.TRUETYPE_FONT, Io.getResource("fonts/digital-7.ttf"))
   private var currentInput: InputValue = InputValue.empty
   private var debugging = false
   private var displayUnits: String = ""
 
-  private var defaultColor = Color.white
+  protected var defaultColor = Color.white
 
   def desiredSize = new Dimension(75, 75)
 
