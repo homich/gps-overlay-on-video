@@ -4,7 +4,7 @@ import peregin.gpv.model.{InputValue, MinMax, Sonda}
 
 class SvgTemperatureGauge extends SvgGauge {
 
-  lazy val dummy = InputValue(Some(25), MinMax(-10, 45))
+  lazy val dummy = InputValue(Some(25), MinMax(0, 43))
   override def defaultInput = dummy
 
   override def sample(sonda: Sonda): Unit = { input = sonda.temperature }

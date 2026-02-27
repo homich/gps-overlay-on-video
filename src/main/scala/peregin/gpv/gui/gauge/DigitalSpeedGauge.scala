@@ -12,5 +12,5 @@ class DigitalSpeedGauge extends DigitalGauge {
 
   override def valueText() = input.current.map(v => f"${UnitConverter.distance(v, units)}%2.0f").getOrElse("")
 
-  override def unitText() = UnitConverter.distanceUnits(units)
+  override def unitText() = UnitConverter.speedUnits(units)
 }
