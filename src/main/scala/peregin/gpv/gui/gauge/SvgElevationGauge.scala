@@ -5,7 +5,7 @@ import peregin.gpv.util.UnitConverter
 
 class SvgElevationGauge extends SvgGauge {
 
-  lazy val dummy = InputValue(Some(689), MinMax(0, 1200))
+  lazy val dummy = InputValue(Some(689), MinMax(0, 1300))
   override def defaultInput = dummy
 
   override def sample(sonda: Sonda): Unit = input = sonda.elevation
