@@ -3,16 +3,20 @@ package peregin.gpv.gui.gauge
 import scala.swing._
 import java.awt.{BasicStroke, Color, Dimension, Font, RenderingHints}
 import peregin.gpv.model.{InputValue, Sonda}
+import peregin.gpv.util.Io
 
 import java.util.function.Consumer
 
 
 trait GaugePainter {
 
-  lazy val gaugeFont = new Font("Verdana", Font.PLAIN, 12)
+//  lazy val gaugeFont = new Font("Verdana", Font.PLAIN, 12)
+  lazy val gaugeFont = Font.createFont(Font.TRUETYPE_FONT, Io.getResource("fonts/digital-7.ttf"))
   private var currentInput: InputValue = InputValue.empty
   private var debugging = false
   private var displayUnits: String = ""
+
+  protected var defaultColor = Color.white
 
   def desiredSize = new Dimension(75, 75)
 
@@ -62,21 +66,22 @@ trait GaugePainter {
     g.setColor(new Color(0, 0, 0, 128))
     g.setStroke(new BasicStroke(shadowWidth(g, devHeight).toFloat))
     consumer.accept(g)
-    g.setColor(Color.yellow)
+    g.setColor(defaultColor)
     g.setStroke(new BasicStroke(lineWidth(g, devHeight).toFloat))
     consumer.accept(g)
   }
 
-  def textWidthShadow(g: Graphics2D, text: String, x: Double, y: Double, c: Color = Color.yellow): Unit = {
+  def textWidthShadow(g: Graphics2D, text: String, x: Double, y: Double, c: Color = defaultColor): Unit = {
     val ix = x.toInt
     val iy = y.toInt
     g.setColor(new Color(0, 0, 0, c.getAlpha))
     g.drawString(text, ix + 1, iy + 1)
+    g.drawString(text, ix + 2, iy + 2)
     g.setColor(c)
     g.drawString(text, ix, iy)
   }
 
-  def textOnSemiTransparent(g: Graphics2D, text: String, x: Double, y: Double, c: Color = Color.yellow): Unit = {
+  def textOnSemiTransparent(g: Graphics2D, text: String, x: Double, y: Double, c: Color = defaultColor): Unit = {
     val ix = x.toInt
     val iy = y.toInt
     g.setColor(new Color(0, 0, 0, 128))

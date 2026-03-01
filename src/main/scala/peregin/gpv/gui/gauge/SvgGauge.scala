@@ -46,11 +46,20 @@ trait SvgGauge extends GaugePainter {
 
     // draw heart icon
     g.setColor(Color.white)
-    val px = 10
-    val py = (h - 10) / 2
 
-    val sx = w / 4
-    val sy = h / 4
+
+    val dx = 20
+
+    val px = dx
+    val py = h/3
+
+    val sx = w/3
+    val sy = h/3
+
+//    g.drawLine(0,0,w,0)
+//    g.drawLine(w,0,w,h)
+//    g.drawLine(w,h,0,h)
+//    g.drawLine(0,h,0,0)
 
     val whiteImage = ImageCache.svgImage(imagePath, sx, sy, 255)
     g.drawImage(whiteImage, px, py, null)
@@ -67,13 +76,25 @@ trait SvgGauge extends GaugePainter {
     g.setClip(null)
 
     // draw current value
-    g.setFont(gaugeFont.deriveFont(Font.BOLD, (box / 4).toFloat))
-    val tb = g.getFontMetrics.getStringBounds(valueText, g)
-    textWidthShadow(g, valueText, px + (w - tb.getWidth) / 2, (h + tb.getHeight) / 2)
+//    g.setFont(gaugeFont.deriveFont(Font.BOLD, (box / 4).toFloat))
+//    val tb = g.getFontMetrics.getStringBounds(valueText, g)
+//    textWidthShadow(g, valueText, px + (w - tb.getWidth) / 2, (h + tb.getHeight) / 2)
+//    // draw unit
+//    g.setFont(gaugeFont.deriveFont(Font.BOLD, (box / 12).toFloat))
+//    val utb = g.getFontMetrics.getStringBounds(unitText, g)
+//    textWidthShadow(g, unitText, px + (w - utb.getWidth) / 2, cy + utb.getHeight * 2.2)
+
+    val fs = box.toFloat / 2
+
+    // draw current speed
+    g.setFont(gaugeFont.deriveFont(Font.BOLD, fs))
+    val text = valueText
+    val tb = g.getFontMetrics.getStringBounds(text, g)
+    textWidthShadow(g, text, dx + (w - tb.getWidth) / 2, cy + box / 2 - tb.getHeight * 1.2)
     // draw unit
-    g.setFont(gaugeFont.deriveFont(Font.BOLD, (box / 12).toFloat))
-    val utb = g.getFontMetrics.getStringBounds(unitText, g)
-    textWidthShadow(g, unitText, px + (w - utb.getWidth) / 2, cy + utb.getHeight * 2.2)
-  }
+    g.setFont(gaugeFont.deriveFont(Font.BOLD, fs / 4))
+    val utext = unitText
+    val utb = g.getFontMetrics.getStringBounds(utext, g)
+    textWidthShadow(g, utext, dx +  (w - utb.getWidth) / 2, cy + box / 2 + utb.getHeight * 2 - tb.getHeight * 1.2)  }
 
 }
