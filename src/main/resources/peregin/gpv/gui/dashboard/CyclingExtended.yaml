@@ -1,5 +1,6 @@
 code: CyclingExtended
 name: Cycling Extended Dashboard
+mainColor: white
 gauges:
   - name: heartrate
     clazz: peregin.gpv.gui.gauge.SvgHeartRateGauge
