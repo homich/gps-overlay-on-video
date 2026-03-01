@@ -56,10 +56,10 @@ trait SvgGauge extends GaugePainter {
     val sx = w/3
     val sy = h/3
 
-//    g.drawLine(0,0,w,0)
-//    g.drawLine(w,0,w,h)
-//    g.drawLine(w,h,0,h)
-//    g.drawLine(0,h,0,0)
+    val blackOutlineOfSvgImage = 3
+
+    val blackImage = ImageCache.svgImage(imagePath, sx + 2 * blackOutlineOfSvgImage, sy + 2 * blackOutlineOfSvgImage, 0)
+    g.drawImage(blackImage, px - blackOutlineOfSvgImage, py - blackOutlineOfSvgImage, null)
 
     val whiteImage = ImageCache.svgImage(imagePath, sx, sy, 255)
     g.drawImage(whiteImage, px, py, null)
