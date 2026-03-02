@@ -16,8 +16,6 @@ class ElevationChart extends ChartPainter with KnobPainter {
   var progress: Option[Sonda] = None
 
   protected val elevFont = new Font("Arial", Font.BOLD, 10)
-  private val chartFont = new Font("Verdana", Font.PLAIN, 12)
-
   var metersWidth = 0
   protected var metersHalfHeight = 0
   protected var timeWidth = 0
@@ -158,7 +156,7 @@ class ElevationChart extends ChartPainter with KnobPainter {
         // altitude
         val alt = sonda.elevation.current
         val fontSize = (pxHeight.toFloat / 5) min (pxWidth.toFloat / 14)
-        g.setFont(chartFont.deriveFont(Font.BOLD, fontSize))
+        g.setFont(gaugeFont.deriveFont(Font.BOLD, fontSize))
         val atb = g.getFontMetrics.getStringBounds("8888 m", g)
         val middleHeight = gridBottom - (height - atb.getHeight) / 2
         if (alt.isDefined) {

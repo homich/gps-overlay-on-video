@@ -2,7 +2,7 @@ package peregin.gpv.gui.gauge
 
 import peregin.gpv.model.{InputValue, MinMax, Sonda}
 
-class SvgTemperatureGauge extends SvgGauge {
+class SvgDigitalTemperatureGauge extends SvgDigitalGauge {
 
   lazy val dummy = InputValue(Some(25), MinMax(0, 43))
   override def defaultInput = dummy

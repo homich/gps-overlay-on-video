@@ -2,7 +2,7 @@ package peregin.gpv.gui.gauge
 
 import peregin.gpv.model.{InputValue, MinMax, Sonda}
 
-class SvgCadenceGauge extends SvgGauge {
+class SvgDigitalCadenceGauge extends SvgDigitalGauge {
 
   lazy val dummy = InputValue(Some(70), MinMax(0, 130))
   override def defaultInput = dummy

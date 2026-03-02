@@ -3,13 +3,13 @@ name: Cycling Extended Dashboard
 mainColor: white
 gauges:
   - name: heartrate
-    clazz: peregin.gpv.gui.gauge.SvgHeartRateGauge
+    clazz: peregin.gpv.gui.gauge.SvgDigitalHeartRateGauge
     x: 0.00
     y: &BOTTOM 0.8
     width: &W 0.2
     height: &H 0.20
   - name: cadence
-    clazz: peregin.gpv.gui.gauge.SvgCadenceGauge
+    clazz: peregin.gpv.gui.gauge.SvgDigitalCadenceGauge
     x: 0.2
     y: *BOTTOM
     width: *W
@@ -21,13 +21,13 @@ gauges:
     width: *W
     height: *H
   - name: temperature
-    clazz: peregin.gpv.gui.gauge.SvgTemperatureGauge
+    clazz: peregin.gpv.gui.gauge.SvgDigitalTemperatureGauge
     x: 0.6
     y: *BOTTOM
     width: *W
     height: *H
   - name: elev
-    clazz: peregin.gpv.gui.gauge.SvgElevationGauge
+    clazz: peregin.gpv.gui.gauge.SvgDigitalElevationGauge
     x: 0.8
     y: *BOTTOM
     width: *W

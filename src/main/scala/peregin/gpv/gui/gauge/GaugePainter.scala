@@ -10,8 +10,7 @@ import java.util.function.Consumer
 
 trait GaugePainter {
 
-//  lazy val gaugeFont = new Font("Verdana", Font.PLAIN, 12)
-  lazy val gaugeFont = Font.createFont(Font.TRUETYPE_FONT, Io.getResource("fonts/digital-7.ttf"))
+  lazy val gaugeFont = new Font("Verdana", Font.PLAIN, 12)
   private var currentInput: InputValue = InputValue.empty
   private var debugging = false
   private var displayUnits: String = ""
